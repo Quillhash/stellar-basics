@@ -1,0 +1,11 @@
+doctype html
+html
+head
+title=title
+body
+    h1 Recieved payments
+    form(action="/stellar/receipts" ,method="post")
+        input(type="text", name="accountId",Placeholder='Enter account id')
+        br
+        input(type="submit", value='Received Payments')
+  

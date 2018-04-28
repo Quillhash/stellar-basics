@@ -1,0 +1,21 @@
+doctype html
+html
+head
+title=title
+body
+    h1 You need to have source and destination account id to send payment.
+    h2 #{title}
+    form(action="/stellar/payment" ,method="POST")
+        input(type="text", name="secret",Placeholder='Enter Your secret key')
+        br
+        br
+        input(type="text",name="destinationKey", Placeholder='Enter destination account key')
+        br
+        br
+        input(type="text",name="amount", Placeholder='Enter amount to be send')
+        br
+        br
+        input(type="submit", value='Send Payment')
+        
+
+    
