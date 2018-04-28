@@ -24,7 +24,7 @@ Browser window will show you api endpoints.<br>
 ### http://localhost:3000/stellar/sendPayment
 >> #### This end point will show you a form to send assets (here we can send only lumens as for test network we can have only lumens in our account) from one account to another.You need to have your account secret seed and receiver account public key to send payment.Form submission will send a post request to http://localhost:3000/stellar/payment  where logic of sending payment is fired.You can directly send post request to '/stellar/payment' end point by sending your secret and receiver public key in body of request.You can test post request in postman app.
 
-### http://localhost:3000/stellar/receivedPayments
+### http://localhost:3000/stellar/receivedPayment
 >> #### This end point will show you a form to get the details of received payments of an public key.You need to have your account secret seed and receiver account public key to send payment.Form submission will send a post request to http://localhost:3000/stellar/receipts  where logic of getting receipts is fired.Stellar sdk sends receipts as server sent events.Event data will gets logged to terminal .We can subscribe to these events on client side also but here we are simply logging them .You can directly send post request to '/stellar/receipts' end point by sending your public key in body of request.You can test post request in postman app.
 
 
