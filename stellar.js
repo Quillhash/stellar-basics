@@ -27,7 +27,7 @@ createAccount = (req,res)=>{
         .then(function(account) {
             
             account.balances.forEach(function(balance) {
-              res.render('accountInfo',{AssetType:balance.asset_type ,Balance: balance.balance});
+              res.render('accountInfo',{accountAddress:account.account_id,AssetType:balance.asset_type ,Balance: balance.balance});
             });
           });
     })
@@ -67,7 +67,7 @@ payment = (req,res)=>{
       server.loadAccount(sourceKeys.publicKey())
         .then(function(account) {
             account.balances.forEach(function(balance) {
-              res.render('accountInfo',{AssetType:balance.asset_type ,Balance: balance.balance});
+              res.render('accountInfo',{accountAddress:account.account_id,AssetType:balance.asset_type ,Balance: balance.balance});
             });
           });
     })
@@ -80,16 +80,12 @@ payment = (req,res)=>{
 
 
 getReceivedPayments = (req,res,)=>{
-  var payments = server.payments().forAccount(req.query.accountId);
-    
+  var payments = server.payments().forAccount(req.query.accountId); 
   payments.stream({
     onmessage: function(payment) {
-      
       if (payment.to !== req.query.accountId) {
-        
         return;
       }
-      
       var asset;
       if (payment.asset_type === 'native') {
         asset = 'lumens';
@@ -97,19 +93,12 @@ getReceivedPayments = (req,res,)=>{
       else {
         asset = payment.asset_code + ':' + payment.asset_issuer;
       }
-      console.log(payment.amount + ' ' + asset + ' from ' + payment.from);
-      
-      
+      console.log(payment.amount + ' ' + asset + ' from ' + payment.from); 
     },
-   
     onerror: function(error) {
       console.error('Error in payment stream');
     },
-   
-
   });
-
-
 }
 
 
