@@ -1,0 +1,15 @@
+doctype html
+html
+head
+title=title
+body
+    h1 Secret: #{secret}
+    br
+    h1 Public : #{public}
+    br
+    h2 copy your public key and click on create account to create new account
+    br
+
+    form(action="/stellar/createAccount" ,method="GET")
+         input(type ='submit' value='create account')
+        

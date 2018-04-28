@@ -118,15 +118,7 @@ router.get('/publickey',(req,res)=>{
     var pair = StellarSdk.Keypair.random();
     let secret = pair.secret();
     let public = pair.publicKey();
-    res.send("Secret:" + secret + "<br> Public:" + public +
-    `<br> 
-    <br>
-    <h2> copy your public key and click on create account to create new account </h2>
-    <br>
-    <form method='GET' action = '/stellar/createAccount'> 
-    <input type = 'submit' value='create account'/>
-    </form>`
-);
+    res.render('publicKey',{secret:secret,public:public});
 });
 router.get('/createAccount',(req,res)=>{
     res.sendFile('views/account.html',{root: __dirname });
@@ -135,13 +127,11 @@ router.get('/createAccount',(req,res)=>{
 router.get('/sendPayment',(req,res)=>{
   res.render('payment',{title:"Send payment"});
 });
-
+router.get('/receivedPayment',(req,res)=>{
+  res.render('receivedPayments');
+});
 
 router.get('/receipts',getReceivedPayments);
-
-router.get('/receivedPayment',(req,res)=>{
-    res.render('receivedPayments');
-});
 
 
 router.post('/account',createAccount);
