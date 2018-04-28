@@ -109,6 +109,7 @@ router.get('/publickey',(req,res)=>{
     let public = pair.publicKey();
     res.render('publicKey',{secret:secret,public:public});
 });
+
 router.get('/createAccount',(req,res)=>{
     res.sendFile('views/account.html',{root: __dirname });
 });
@@ -116,6 +117,7 @@ router.get('/createAccount',(req,res)=>{
 router.get('/sendPayment',(req,res)=>{
   res.render('payment',{title:"Send payment"});
 });
+
 router.get('/receivedPayment',(req,res)=>{
   res.render('receivedPayments');
 });
